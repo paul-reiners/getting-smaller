@@ -24,28 +24,22 @@ void pretty_print(const gsl_matrix * M)
 int run_svd(int n) {
   clock_t start, end;
   double cpu_time_used;
+  double random_value;
+
+  srand(time(NULL));
 
   // Set the data for our matrix.
   double* a_ptr = (double *) malloc(n * n * sizeof(double));
 
   if (a_ptr == NULL) {
     printf("Memory not allocated.\n");
+
     exit(0);
   } else {
-      // Memory has been successfully allocated
-      printf("Memory successfully allocated using malloc.\n");
-
-      // Get the elements of the array
       for (int i = 0; i < n * n; ++i) {
-          a_ptr[i] = i + 1;
+        random_value = (double)rand()/RAND_MAX*2.0-1.0;//float in range -1 to 1
+        a_ptr[i] = random_value;
       }
-
-      // Print the elements of the array
-      printf("The elements of the array are: ");
-      for (int i = 0; i < n * n; ++i) {
-          printf("%f, ", a_ptr[i]);
-      }
-      printf("\n\n");
   }
 
   start = clock();
