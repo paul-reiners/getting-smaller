@@ -16,14 +16,14 @@ CFLAGS = -ggdb -O0 -Qunused-arguments -std=c99 -Wall -Werror
 EXE = project
 
 # space-separated list of header files
-# HDRS = ./include/aux.h ./include/bbp.h ./include/pi.h ./include/log2.h
+HDRS = ./include/run_svd.h
 
 # space-separated list of libraries, if any,
 # each of which should be prefixed with -l
 LIBS =  -lgsl -lgslcblas -lm
 
 # space-separated list of source files
-SRCS = ./src/project.c
+SRCS = ./src/project.c  ./src/run_svd.c
 
 # automatically generated list of object files
 OBJS = $(SRCS:.c=.o)
