@@ -3,6 +3,8 @@
 #include <gsl/gsl_linalg.h>
 #include <time.h>
 
+int VERBOSE = 0;
+
 /*
   gsl_matrix_printf prints a matrix as a column vector.  This function
   prints a matrix in block form.
@@ -64,13 +66,17 @@ int run_svd(int n) {
   gsl_linalg_SV_decomp(&A.matrix, V, S, work);
   end = clock();
   cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
-  printf("gsl_linalg_SV_decomp() took %f seconds to execute \n\n", cpu_time_used);
+  printf("gsl_linalg_SV_decomp() took %f seconds to execute \n", cpu_time_used);
+  printf("time per unit: %f seconds\n\n", cpu_time_used / n);
+  printf("%d,%f,%f\n", n, cpu_time_used, cpu_time_used / n);
 
-  //  gsl_matrix_fprintf (stdout, &A.matrix, "%g"); cout<<"\n";
-  pretty_print(&A.matrix); printf("\n");
-  //  gsl_matrix_fprintf (stdout, V, "%g"); cout<<"\n";
-  pretty_print(V); printf("\n");
-  gsl_vector_fprintf(stdout, S, "%g");
+  if (VERBOSE) {
+    //  gsl_matrix_fprintf (stdout, &A.matrix, "%g"); cout<<"\n";
+    pretty_print(&A.matrix); printf("\n");
+    //  gsl_matrix_fprintf (stdout, V, "%g"); cout<<"\n";
+    pretty_print(V); printf("\n");
+    gsl_vector_fprintf(stdout, S, "%g");
+  }
 
   free(a_ptr);
 

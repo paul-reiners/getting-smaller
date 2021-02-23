@@ -3,7 +3,7 @@
 #include "../include/run_svd.h"
 
 int main(int argc, char* argv[]) {
-  int n = atoi(argv[1]);
+  long n = 1 << atoi(argv[1]);
 
   run_svd(n);
 
