@@ -9,6 +9,6 @@
 #ifndef RUN_SVD_H
 #define RUN_SVD_H
 
-int run_svd(int n);
+int run_svd(int m, int n);
 
 #endif // RUN_SVD_H

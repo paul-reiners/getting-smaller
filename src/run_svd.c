@@ -23,30 +23,37 @@ void pretty_print(const gsl_matrix * M)
   }
 }
 
-int run_svd(int n) {
+int run_svd(int m, int n) {
   clock_t start, end;
   double cpu_time_used;
   double random_value;
 
+  int temp = 0;
+  if (m < n) {
+    temp = m;
+    m = n;
+    n = temp;
+  }
+
   srand(time(NULL));
 
-  // Set the data for our matrix.
-  double* a_ptr = (double *) malloc(n * n * sizeof(double));
+  int cell_count = m * n;
+  double* a_ptr = (double *) malloc(cell_count * sizeof(double));
 
   if (a_ptr == NULL) {
     printf("Memory not allocated.\n");
 
     exit(0);
   } else {
-      for (int i = 0; i < n * n; ++i) {
-        random_value = (double)rand()/RAND_MAX*2.0-1.0;//float in range -1 to 1
+      for (int i = 0; i < cell_count; ++i) {
+        random_value = (double) rand() / RAND_MAX * 2.0 - 1.0;
         a_ptr[i] = random_value;
       }
   }
 
   start = clock();
   // Now create a matrix structure using this data.
-  gsl_matrix_view A = gsl_matrix_view_array(a_ptr, n, n);
+  gsl_matrix_view A = gsl_matrix_view_array(a_ptr, m, n);
 
   gsl_matrix * V = gsl_matrix_alloc(n, n);
   gsl_vector * S = gsl_vector_alloc(n);
@@ -83,6 +90,8 @@ int run_svd(int n) {
   gsl_matrix_free(V);
   gsl_vector_free(S);
   gsl_vector_free(work);
+
+  printf("\a");
 
   return 0;
 }
