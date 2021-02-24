@@ -3,6 +3,8 @@
 import getopt
 import sys
 
+from src.compress_gray_scale_image import compress_gray_scale_image
+
 
 def main(argv):
     inputfile = ''
@@ -22,6 +24,7 @@ def main(argv):
             outputfile = arg
     print('Input file is "', inputfile)
     print('Output file is "', outputfile)
+    compress_gray_scale_image(inputfile, outputfile)
 
 
 if __name__ == "__main__":
