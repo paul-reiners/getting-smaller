@@ -8,6 +8,7 @@ def compress_gray_scale_image(input_file_path, output_file_path):
     an_image = PIL.Image.open(input_file_path)
 
     grayscale_image = an_image.convert("L")
+    grayscale_image.save(output_file_path + "_original_" + ".jpg")
     grayscale_array = np.asarray(grayscale_image)
 
     u, s, vh = np.linalg.svd(grayscale_array, full_matrices=True)
