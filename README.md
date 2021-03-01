@@ -3,6 +3,9 @@ Apply the singular value decomposition to image compression and reinforce the Ec
 
 ## Low rank approximations to an image using the SVD
 
+Original Image</br>
+![Original Image](./img/BabySophie.jpg)
+
 Rank-1 approximation</br>
 ![Rank-1 approximation](./img/compressedBabySophie_rank_1.jpg)</br>
 Rank-5 approximation</br>
@@ -13,5 +16,8 @@ Rank-50 approximation</br>
 ![Rank-50 approximation](./img/compressedBabySophie_rank_50.jpg)</br>
 Rank-100 approximation</br>
 ![Rank-100 approximation](./img/compressedBabySophie_rank_100.jpg)</br>
+
+## Color image compression
+
 Original Image</br>
-![Original Image](./img/compressedBabySophie_original_.jpg)
+![Original Image](./img/big_sur.jpeg)
