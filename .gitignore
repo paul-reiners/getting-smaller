@@ -1,6 +1,7 @@
 getting-smaller
 project
 .idea/
+*~
 
 # Prerequisites
 *.d
